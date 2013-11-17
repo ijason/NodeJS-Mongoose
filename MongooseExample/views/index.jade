@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  div.addCommentForm
+        form( method="post", action="/create")
+            div
+                div
+                    span.label Name :
+                    input(type="text", class="nameTxt", name="username")
+                div
+                    span.label Comment :
+                    textarea(name="comment")
+                div#addCommentSubmit
+                    input(type="submit", value="Save")
+  br
+  br
+  #comments
+    - each comment in comments
+      div.comment
+        div.name= comment.username
+        div.created_at= comment.created
+        br
+        div.content= comment.content 
+        hr
+  
